@@ -91,7 +91,7 @@ async def login_user(login_req: LoginRequest):
         conn.close()
 
 @router.post("/check-email")
-async def check_email_exists(email: EmailRequest, token_data: dict = Depends(verify_token)):
+async def check_email_exists(email: EmailRequest):
     try:
         result = user_service.check_email_exists(email.email)
         return {"email_exists": result}

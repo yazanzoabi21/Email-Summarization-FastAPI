@@ -430,7 +430,7 @@ async def list_sent_emails():
 
     try:
         cur.execute("""
-            SELECT id, sender, recipient, subject, body, cc, bcc, sent_at, status, is_read, is_starred
+            SELECT id, sender, recipient, subject, body, cc, bcc, sent_at, status, is_starred
             FROM sent_emails
             ORDER BY sent_at DESC
         """)
@@ -448,8 +448,7 @@ async def list_sent_emails():
                 "bcc": row[6],
                 "time": row[7].strftime("%I:%M %p"),
                 "status": row[8],
-                "isRead": row[9],
-                "isStarred": row[10]
+                "isStarred": row[9]
             })
 
         return emails
